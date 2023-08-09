@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<form id="friendform">
+    <table>
+        <tr>
+            <td>Friend Name</td>
+            <td><input id="txtFriendName" name="FriendName" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td><input id="txtPhone" name="Phone" type="text" /></td>
+        </tr>
+        <tr>
+            <td>State</td>
+            <td><input id="txtState" name="State" type="text" /></td>
+        </tr>
+    </table>
+    <input id="btnsubmit" type="button" value="Submit" />
+</form>
+
+<script>
+    $(document).ready(function () {
+        $("#btnsubmit").click(function (e) {
+            //Serialize the form datas.
+            var valdata = $("#friendform").serialize();
+            //to get alert popup
+            alert(valdata);
+            $.ajax({
+                url: "/Friend/AddFriend",
+                type: "POST",
+                dataType: 'json',
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                data: valdata
+            });
+        });
+    });
+</script>  
