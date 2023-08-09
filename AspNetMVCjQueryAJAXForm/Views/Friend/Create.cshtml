@@ -27,13 +27,19 @@
             //Serialize the form datas.
             var valdata = $("#friendform").serialize();
             //to get alert popup
-            alert(valdata);
+          //  alert(valdata);
             $.ajax({
                 url: "/Friend/AddFriend",
                 type: "POST",
                 dataType: 'json',
                 contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                data: valdata
+                data: valdata,
+                success: function (r) {
+                    alert("Friend Name: " + r.FriendName.toString());
+                },
+                error: function (err) {
+                    alert(err);
+                }
             });
         });
     });
